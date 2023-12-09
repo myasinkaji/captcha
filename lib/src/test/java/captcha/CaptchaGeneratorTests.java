@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class CaptchaTest {
-    private Captcha captcha;
+public class CaptchaGeneratorTests {
+    private CaptchaGenerator captchaGenerator;
 
     @BeforeEach
     public void setUp() {
@@ -27,23 +27,23 @@ public class CaptchaTest {
         config.setDarkBackgroundColor(Color.BLACK);
         config.setLightBackgroundColor(Color.WHITE);
 
-        // Create the Captcha instance with the mock config
-        captcha = new Captcha(config);
+        // Create the CaptchaGenerator instance with the mock config
+        captchaGenerator = new CaptchaGenerator (config);
     }
 
     @Test
-    @DisplayName("Test Captcha.generate() method")
+    @DisplayName("Test CaptchGenerator .generate() method")
     public void testGenerateCaptcha() {
         // Create a mock for RandomStringGenerator
         String code = "ABC123";
         RandomStringGenerator randomStringGenerator = mock(RandomStringGenerator.class);
         when(randomStringGenerator.next()).thenReturn(code);
 
-        // Set the mock generator in the Captcha instance
-        captcha.setRandomStringGenerator(randomStringGenerator);
+        // Set the mock generator in the CaptchaGenerator  instance
+        captchaGenerator.setRandomStringGenerator(randomStringGenerator);
 
         // Generate the captcha
-        var generatedCaptcha = captcha.generate();
+        var generatedCaptcha = captchaGenerator.generate();
 
         // Verify that the generated captcha is not null
         assertNotNull(generatedCaptcha);

@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-public class Captcha {
+public class CaptchaGenerator {
     private Config config;
 
     private Font[] fonts;
@@ -25,11 +25,11 @@ public class Captcha {
         this.randomStringGenerator = randomStringGenerator;
     }
 
-    public Captcha() {
+    public CaptchaGenerator () {
         this.setConfig(new Config());
     }
 
-    public Captcha(Config config) {
+    public CaptchaGenerator (Config config) {
         this.setConfig(config);
     }
 
